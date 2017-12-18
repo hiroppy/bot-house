@@ -1,0 +1,38 @@
+.container {
+  overflow: hidden;
+  padding: 10px;
+}
+
+.nameContainer {
+  height: 50px;
+}
+
+.name {
+  display: block;
+  font-size: 2.7rem;
+  height: 50px;
+}
+
+.input:empty:after {
+  color: #ccc;
+  content: 'click-to-edit';
+}
+
+.info {
+  display: flex;
+  margin-top: 15px;
+}
+
+.left {
+  padding-right: 15px;
+  width: 40%;
+}
+
+.right {
+  width: 60%;
+}
+
+.errorBox {
+  background: #fff;
+  padding: 15px;
+}

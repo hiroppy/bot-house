@@ -1,0 +1,17 @@
+{
+  "presets": ["react", "stage-1", "flow", ["env", {
+      "modules": false,
+      "targets": {
+        "chrome": 60
+      }
+    }]
+  ],
+  "env": {
+    "development": {
+      "plugins": ["react-hot-loader/babel"]
+    },
+    "production": {
+      "presets": ["react-optimize"]
+    }
+  }
+}

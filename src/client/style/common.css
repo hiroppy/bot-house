@@ -1,0 +1,9 @@
+@font-face {
+  font-family: Stratum;
+  src: url("./fonts/StratumNo1 Medium.ttf");
+}
+
+body {
+  font-family: Stratum, "Helvetica Neue For Number", "Hiragino Kaku Gothic ProN", "メイリオ";
+  font-size: 20px;
+}

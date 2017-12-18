@@ -1,0 +1,21 @@
+version: "3.4"
+
+services:
+  db:
+    container_name: db
+    image: "postgres:10.1"
+    restart: always
+    env_file: .env
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  app:
+    container_name: app
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    env_file: .env

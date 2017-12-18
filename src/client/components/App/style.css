@@ -1,0 +1,17 @@
+@import "../../style/variable.css";
+
+body {
+  background: var(--color-background);
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.content {
+  height: calc(100vh - 50px);
+  margin: 0 15px;
+  overflow-y: auto;
+  width: 100%;
+}

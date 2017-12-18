@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+}
+
+.li {
+  margin: 10px;
+  width: 250px;
+}
+
+.a {
+  text-decoration: none;
+}
+
+.name {
+  color: #333;
+  font-size: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.info {
+  background: #fff;
+  box-shadow: rgba(102, 119, 136, 0.03) 0px 6px 8px, rgba(102, 119, 136, 0.3) 0px 1px 2px;
+  color: #333;
+  padding: 10px;
+}
+
+.icon {
+  align-items: center;
+  display: flex;
+  height: 50px;
+}
+
+.img {
+  height: 40px;
+}

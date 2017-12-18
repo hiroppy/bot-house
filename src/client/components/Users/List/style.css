@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+}
+
+.section {
+  height: 250px;
+  text-align: center;
+  padding: 15px;
+  width: 250px;
+}
+
+.a {
+  color: #333;
+  text-decoration: none;
+}
+
+.img {
+  border-radius: 50%;
+  height: 150px;
+}
+
+.name {
+  font-size: 1.2rem;
+}
