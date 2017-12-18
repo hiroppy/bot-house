@@ -35,7 +35,7 @@ class Header extends React.PureComponent<Props, void> {
           }
         </div>
         <a
-          href="https://github.com/abouthiroppy"
+          href="https://github.com/abouthiroppy/bot-house"
           target="_blank"
           className={styles.github}
         >

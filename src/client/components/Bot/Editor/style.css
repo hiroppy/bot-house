@@ -32,6 +32,10 @@
   width: 60%;
 }
 
+.column {
+  font-size: 1.3rem;
+}
+
 .errorBox {
   background: #fff;
   padding: 15px;

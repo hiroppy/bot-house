@@ -35,6 +35,10 @@ const Router = () => (
         path="/users"
         component={() => (<UsersIndex />)}
       />
+      <Route
+        path="/"
+        component={() => (<Index />)}
+      />
     </Switch>
   </App>
 );

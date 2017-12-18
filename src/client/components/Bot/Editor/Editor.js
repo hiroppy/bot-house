@@ -65,10 +65,10 @@ const Editor = (props: Props) => (
         }
         {
           props.readOnly ? (
-            <p>{props.createdAt}</p>
+            <p className={styles.column}>{props.createdAt}</p>
           ) : null
         }
-        <p>
+        <p className={styles.column}>
           channel: #
           <RIEInput
             value={props.channelName}
@@ -78,7 +78,7 @@ const Editor = (props: Props) => (
             isDisabled={props.readOnly}
           />
         </p>
-        <p>
+        <p className={styles.column}>
           Word:
           <RIEInput
             value={props.identificationWord}
@@ -88,7 +88,7 @@ const Editor = (props: Props) => (
             isDisabled={props.readOnly}
           />
         </p>
-        <p>
+        <p className={styles.column}>
           description:
           <RIEInput
             value={props.description}

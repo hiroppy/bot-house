@@ -80,16 +80,23 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
       if (!channelValue) throw new Error('not found');
 
       const botsList = await bots.findAll({
-        channel_id         : channelValue.channel_id,
-        identification_word: res.text
+        channel_id: channelValue.channel_id
       });
 
       if (botsList.length === 0) return;
 
-      id = botsList[0].dataValues.id;
-      icon = botsList[0].dataValues.icon;
-      script = botsList[0].dataValues.script;
-      username = botsList[0].dataValues.name;
+      const bot = botsList.find((b) => {
+        const re = new RegExp(b.dataValues.identification_word);
+
+        return !!res.text.match(re);
+      });
+
+      if (!bot) return;
+
+      id       = bot.dataValues.id;
+      icon     = bot.dataValues.icon;
+      script   = bot.dataValues.script;
+      username = bot.dataValues.name;
     } catch (e) {
       console.error(e);
       return;

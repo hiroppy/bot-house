@@ -25,7 +25,9 @@
   background: #fff;
   box-shadow: rgba(102, 119, 136, 0.03) 0px 6px 8px, rgba(102, 119, 136, 0.3) 0px 1px 2px;
   color: #333;
+  height: 230px;
   padding: 10px;
+  width: 230px;
 }
 
 .icon {
