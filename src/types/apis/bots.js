@@ -15,6 +15,7 @@ export type BotSchema = {
   createdAt: string;
   updatedAt: string;
   channelName: string;
+  storage: Object;
 };
 
 export type GetBot = {

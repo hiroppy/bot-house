@@ -6,6 +6,7 @@ import App from './components/App';
 import {
   Index,
   BotsShow,
+  BotsShowStorage,
   BotsCreate,
   ChannelsShow,
   UsersIndex,
@@ -18,6 +19,10 @@ const Router = () => (
       <Route
         path="/bots/create"
         component={() => (<BotsCreate />)}
+      />
+      <Route
+        path="/bots/:id/storage"
+        component={() => (<BotsShowStorage />)}
       />
       <Route
         path="/bots/:id"

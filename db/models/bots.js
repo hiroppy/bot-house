@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     name               : DataTypes.STRING,
     latest_error       : DataTypes.STRING,
     channel_id         : DataTypes.STRING,
-    private            : DataTypes.BOOLEAN
+    private            : DataTypes.BOOLEAN,
+    storage            : DataTypes.JSON
   }, {
     underscored : true,
     classMethods: {

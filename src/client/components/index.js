@@ -11,6 +11,11 @@ export const BotsShow = Loadable({
   loading: () => (<div>Loading...</div>)
 });
 
+export const BotsShowStorage = Loadable({
+  loader : () => import(/* webpackChunkName: 'BotsCreate' */ '../containers/pages/Bots/Storage'),
+  loading: () => (<div>Loading...</div>)
+});
+
 export const BotsCreate = Loadable({
   loader : () => import(/* webpackChunkName: 'BotsCreate' */ '../containers/pages/Bots/Create'),
   loading: () => (<div>Loading...</div>)

@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Editor from '../../../Bot/Editor';
 import styles from './style.css';
 
@@ -136,6 +137,7 @@ class Show extends React.PureComponent<Props, State> {
           description={this.state.info.description}
           identificationWord={this.state.info.identificationWord}
         />
+        <Link to={`/bots/${this.state.info.id}/storage`}>storage</Link>
       </div>
     );
   }

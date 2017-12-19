@@ -67,7 +67,7 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
 
   // validate a bot and run script
   else if (res.user !== botId && res.text !== undefined && res.subtype !== 'bot_message') {
-    let id, icon, username, script;
+    let id, icon, username, script, storage;
 
     try {
 
@@ -93,10 +93,11 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
 
       if (!bot) return;
 
-      id       = bot.dataValues.id;
-      icon     = bot.dataValues.icon;
-      script   = bot.dataValues.script;
+      id = bot.dataValues.id;
+      icon = bot.dataValues.icon;
+      script = bot.dataValues.script;
       username = bot.dataValues.name;
+      storage = bot.dataValues.storage;
     } catch (e) {
       console.error(e);
       return;
@@ -105,7 +106,7 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
     let message;
 
     try {
-      const api = deepFreeze({
+      const api = {
         slack: {
           message    : res.text,
           postMessage: (message) => {
@@ -117,8 +118,9 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
             });
           }
         },
-        modules
-      });
+        modules: deepFreeze(modules),
+        storage
+      };
 
       const bannedWord = script.match(/process|require|global/g);
 
@@ -127,6 +129,13 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
       script = script.replace(/process/, '').replace(/require/, '');
 
       message = await wrappedEval(script, api);
+
+      // validate
+      if (Object.prototype.toString.call(api.storage) !== '[object Object]') {
+        throw new Error('storage type is not JSON');
+      }
+
+      await bots.update(id, { storage: api.storage });
 
       // TODO: add validation
       if (typeof message === 'object') throw new Error('required Primitive Type');

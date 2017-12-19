@@ -35,6 +35,7 @@ const sampleScript = `/*
       fetch: Object;
       cheerio: Object;
     };
+    storage: JSON;
   };
 */
 
