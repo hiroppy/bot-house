@@ -12,7 +12,8 @@ export const BotsShow = Loadable({
 });
 
 export const BotsShowStorage = Loadable({
-  loader : () => import(/* webpackChunkName: 'BotsCreate' */ '../containers/pages/Bots/Storage'),
+  loader : () =>
+    import(/* webpackChunkName: 'BotsShowStorage' */ '../containers/pages/Bots/Storage'),
   loading: () => (<div>Loading...</div>)
 });
 
