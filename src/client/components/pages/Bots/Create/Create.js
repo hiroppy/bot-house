@@ -37,6 +37,14 @@ const sampleScript = `/*
     };
     storage: JSON;
   };
+
+  If you want to use attachments please return the following.
+  {
+    text: string;
+    attachments: Array<{
+      ... // see: https://api.slack.com/docs/message-attachments
+    }>;
+  };
 */
 
 (() => {

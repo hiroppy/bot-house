@@ -55,12 +55,21 @@ const Editor = (props: Props) => (
               emoji={props.icon}
             />
           ) : (
-            <Picker
-              emoji={props.icon}
-              title=":-)"
-              style={{ width: '100%' }}
-              onClick={(emoji) => props.onChange('icon', emoji.colons)}
-            />
+            <div>
+              <RIEInput
+                value={props.icon}
+                change={(res) => props.onChange('icon', res.icon)}
+                propName="icon"
+                className={styles.input}
+                isDisabled={props.readOnly}
+              />
+              <Picker
+                emoji={props.icon}
+                title=":-)"
+                style={{ width: '100%' }}
+                onClick={(emoji) => props.onChange('icon', emoji.colons)}
+              />
+            </div>
           )
         }
         {

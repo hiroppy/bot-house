@@ -39,7 +39,9 @@ const common = {
   },
   plugins: [
     new Dotenv(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'bot-house'
+    }),
     new webpack.NamedModulesPlugin()
   ]
 };

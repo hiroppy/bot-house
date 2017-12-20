@@ -36,7 +36,7 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
             color     : data.latest_error ? 'danger' : 'good',
             title     : data.name,
             title_link: `${process.env.SITE_URI}/#/bots/${data.id}`,
-            'fields'  : [
+            fields  : [
               {
                 title: 'Status',
                 value: data.latest_error ? 'error' : 'good',
@@ -138,8 +138,12 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
       await bots.update(id, { storage: api.storage });
 
       // TODO: add validation
-      if (typeof message === 'object') throw new Error('required Primitive Type');
+      // attachments
+      // if (!(Object.prototype.toString.call(message) !== '[object Object]' && message.text)) {
+      // }
+      // if (typeof message === 'object') throw new Error('required Primitive Type');
     } catch (e) {
+      console.log(e);
       bots.update(id, { latest_error: e.toString() });
 
       return web.chat.postMessage(res.channel, 'an error occurred', {
@@ -151,8 +155,21 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
       });
     }
 
-    // TODO: implement attachments
     try {
+      if (Object.prototype.toString.call(message) === '[object Object]' && message.text) {
+        return web.chat.postMessage(
+          res.channel,
+          message.text,
+          {
+            attachments: message.attachments,
+            username,
+            ...icon.includes('http') ?
+              { icon_url: icon } :
+              { icon_emoji: icon }
+          }
+        );
+      }
+
       rtm._chat.postMessage(res.channel, message, {
         username,
         ...icon.includes('http') ?
