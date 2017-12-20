@@ -125,10 +125,14 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
 
       message = await wrappedEval(script, api);
 
+      if (api.storage == undefined) {
+        api.storage = {};
+      }
+
       // validate
-      // if (Object.prototype.toString.call(api.storage) !== '[object Object]') {
-      //   throw new Error('storage type is not JSON');
-      // }
+      if (Object.prototype.toString.call(api.storage) !== '[object Object]') {
+        throw new Error('storage type is not JSON');
+      }
 
       await bots.update(id, { storage: api.storage });
 
