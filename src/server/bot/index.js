@@ -38,11 +38,6 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
             title_link: `${process.env.SITE_URI}/#/bots/${data.id}`,
             fields  : [
               {
-                title: 'Status',
-                value: data.latest_error ? 'error' : 'good',
-                short: true
-              },
-              {
                 title: 'Keyword',
                 value: data.identification_word,
                 short: true
@@ -86,7 +81,7 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
       if (botsList.length === 0) return;
 
       const bot = botsList.find((b) => {
-        const re = new RegExp(b.dataValues.identification_word);
+        const re = new RegExp(`^${b.dataValues.identification_word}$`);
 
         return !!res.text.match(re);
       });
@@ -131,9 +126,9 @@ rtm.on(CLIENT_EVENTS.RTM.RAW_MESSAGE, async(e) => {
       message = await wrappedEval(script, api);
 
       // validate
-      if (Object.prototype.toString.call(api.storage) !== '[object Object]') {
-        throw new Error('storage type is not JSON');
-      }
+      // if (Object.prototype.toString.call(api.storage) !== '[object Object]') {
+      //   throw new Error('storage type is not JSON');
+      // }
 
       await bots.update(id, { storage: api.storage });
 
